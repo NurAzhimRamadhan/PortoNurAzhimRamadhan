@@ -11,17 +11,21 @@ import sc from "./assets/images/sc.jpg";
 import samsung from "./assets/images/samsung.jpg";
 import palmora from "./assets/images/palmora.jpg";
 import muharram from "./assets/images/muaharram.jpg";
-import profile from "./assets/profile.jpg";
+import profile from "./assets/images/profile-maroon.png";
 import finconnect from "./assets/images/finconnect.jpg";
 import isec from "./assets/images/isec.jpg";
 import isecQr from "./assets/images/isec-qr.jpg";
 import kopikita from "./assets/images/kopikita.jpg";
 import hsu from "./assets/images/hsu.jpg";
 import edufair from "./assets/images/edufair.jpg";
-import figfig from "./assets/images/figfig.jpg";
+import figfig from "./assets/images/figfig.jpg"; // eslint-disable-line no-unused-vars
 import aiai from "./assets/images/aiai.jpg";
 import wana from "./assets/images/wana.svg";
 import sicProject from "./assets/images/sic-project.svg";
+import himsikaPr from "./assets/images/himsika-pr.jpg";
+import revoist from "./assets/images/revoist.jpg";
+import fasilkom from "./assets/images/fasilkom.jpg";
+import isgath from "./assets/images/isgath.jpg";
 
 // -------------------- PROFILE --------------------
 export const profileData = {
@@ -82,9 +86,9 @@ export const focusAreas = [
 
 // -------------------- HERO STATS --------------------
 export const heroStats = [
+  { label: "Cumulative GPA", value: 3.98, suffix: "", isDecimal: true },
   { label: "Flagship Projects", value: 6, suffix: "+" },
   { label: "Certifications", value: 6, suffix: "+" },
-  { label: "Organizations & Roles", value: 5, suffix: "+" },
   { label: "National Awards", value: 2, suffix: "" },
 ];
 
@@ -254,53 +258,60 @@ export const projects = [
     id: "p-finconnect",
     slug: "finconnect",
     title: "FinConnect",
-    subtitle: "All in One FinTech that is Secure, Anti Fraud, and Controlled",
-    category: "FinTech, AI, Financial Technology",
-    tags: ["FinTech", "Artificial Intelligence", "Financial Systems"],
+    subtitle: "AI Powered FinTech Platform",
+    category: "AI, FinTech, Business Intelligence",
+    tags: [
+      "Artificial Intelligence",
+      "FinTech",
+      "Smart Analytics",
+      "Business Intelligence",
+    ],
     image: finconnect,
-    role: "System Designer, Team Member, Information Systems",
+    role: "AI System Designer, Product Lead, Information Systems",
     period: "2025",
     description:
-      "FinTech information system delivering safe transactions, anti fraud safeguards, and a clearer view of personal financial control. Designed as a unified surface across information and accounting flows.",
+      "AI powered FinTech platform that unifies financial management, smart analytics, AI insights, financial recommendations, decision support, and business intelligence into a single product surface.",
     flagship: true,
     overview:
-      "FinConnect is an all in one FinTech information system that brings secure transactions, anti fraud safeguards, and accounting clarity into a single, unified product surface.",
+      "FinConnect is an AI powered FinTech platform that combines financial management, smart analytics, AI driven insights, financial recommendations, and decision support inside one unified business intelligence surface.",
     research: [
-      "Users juggle multiple disconnected financial apps and lose track of their full financial picture.",
-      "Fraud and suspicious activity often go unnoticed because alerting is buried inside individual apps.",
-      "Personal accounting is rarely connected to the actual transaction layer in a meaningful way.",
+      "Users juggle disconnected financial apps and lose visibility into their complete financial picture.",
+      "Existing FinTech tools rarely apply AI to translate raw transactions into recommended next actions.",
+      "Decision support is missing across consumer FinTech, leaving users to interpret their own data.",
     ],
     problem:
-      "Users struggle with fragmented financial apps, exposure to fraud, and unclear visibility into transaction integrity. Existing solutions do not connect security, accounting, and clarity in one experience.",
+      "Users need an intelligent financial platform that goes beyond record keeping. They need AI driven recommendations, smart analytics that surface anomalies, and a decision support layer that turns transactions into clear next moves.",
     approach:
-      "Designed an integrated FinTech system spanning secure transactions, anti fraud signals, and accounting clarity. Modeled user flows, UI surfaces, and the underlying information system architecture for a multi feature financial platform.",
+      "Designed an AI powered FinTech architecture spanning financial management, smart analytics, AI insights, recommendation engine, decision support, and a business intelligence surface. Modeled user flows, data architecture, and the AI scoring logic that ranks suggested actions.",
     solution:
-      "A unified product that combines a secure transaction layer, anti fraud signal engine, and a personal accounting view, all wired into the same information system architecture.",
+      "A single platform that pairs everyday financial management with an AI recommendation engine, smart analytics dashboards, and a decision support layer that surfaces the next best action.",
     outcome:
-      "Delivered as the academic capstone for Sistem Informasi Akuntansi dan Keuangan. The deliverable includes the full product narrative, brand identity, user flow, and UI direction (s.id/FinConnect).",
+      "Delivered as the academic capstone for the Accounting and Financial Information Systems course. Includes the full product narrative, AI feature framework, brand identity, user flow, and product UI direction (s.id/FinConnect).",
     impact:
-      "Showcased how a single integrated FinTech surface can reduce user cognitive load, surface fraud earlier, and convert raw transactions into clear personal financial intelligence.",
+      "Demonstrated how an AI powered FinTech platform can compress multiple disconnected apps into one decision oriented experience and turn raw transactions into actionable financial intelligence.",
     features: [
-      "Secure transactions (Transaksi Aman) at both the protocol and UX layer.",
-      "Anti fraud signals and alerts for suspicious patterns.",
-      "Unified accounting view for personal financial control.",
-      "All in one product surface that connects payments, accounting, and insights.",
+      "Financial Management for daily tracking, budgeting, and goal setting.",
+      "Smart Analytics with anomaly detection and spending pattern insights.",
+      "AI Insights that translate transactions into plain language recommendations.",
+      "Financial Recommendations ranked by confidence and impact.",
+      "Decision Support layer that surfaces the next best action for the user.",
+      "Business Intelligence view for monthly and quarterly financial direction.",
     ],
     designProcess: [
-      "Mapped the current fragmented landscape of financial apps that target Indonesian users.",
-      "Defined three core jobs to be done: transact safely, detect fraud early, and stay in control.",
-      "Designed a single information architecture that lets every feature share the same data spine.",
-      "Built brand identity, UI direction, and user flows that emphasize trust and clarity.",
+      "Mapped the fragmented landscape of financial apps targeting Indonesian users.",
+      "Defined six AI driven jobs to be done: manage, analyze, recommend, decide, learn, and act.",
+      "Designed a unified data spine that all AI modules share for context.",
+      "Built the brand identity, UI direction, and AI explainability layer.",
     ],
     lessonsLearned: [
-      "Security features only build trust when users can clearly see them working.",
-      "Accounting and payments must share one data model or the product splits in half.",
-      "Fraud UX needs to be calm and explainable, not alarming and opaque.",
+      "AI recommendations only build trust when they show transparent reasoning.",
+      "Financial management and AI insights must share one data model or the product splits in half.",
+      "Decision support is the highest leverage feature in consumer FinTech.",
     ],
     futureDevelopment: [
-      "Real implementation of the anti fraud engine on top of live transaction data.",
-      "Integration with Indonesian payment rails for a full pilot.",
-      "Companion mobile app for daily personal financial control.",
+      "Real implementation of the AI recommendation engine on live transaction data.",
+      "Integration with Indonesian payment rails and open banking APIs for a full pilot.",
+      "Companion mobile app for daily AI assisted personal financial decisions.",
     ],
     team: [
       "Nasywa Salsabila",
@@ -309,7 +320,14 @@ export const projects = [
       "Nabil Muzakkii",
       "Muhammad Syifaa'ur Rahman",
     ],
-    technologies: ["Information Systems", "UI/UX Design", "Financial Modeling", "AI / Fraud Logic"],
+    technologies: [
+      "Artificial Intelligence",
+      "Information Systems",
+      "UI/UX Design",
+      "Financial Modeling",
+      "Smart Analytics",
+      "Business Intelligence",
+    ],
     link: "https://s.id/FinConnect",
     secondaryImage: null,
   },
@@ -480,6 +498,7 @@ export const experiences = [
     organization: "HIMSIKA, Information Systems Student Association",
     period: "2026",
     category: "Leadership",
+    image: himsikaPr,
     description:
       "Lead the Public Relations Department at HIMSIKA, coordinating internal and external relationship management, organizational branding, and public communication for the Information Systems student community.",
     contributions: [
@@ -534,6 +553,7 @@ export const experiences = [
     organization: "Revoist 5.0 (Volunteer Experience)",
     period: "2025",
     category: "Volunteer",
+    image: revoist,
     description:
       "Led sponsorship acquisition and partnership communication for Revoist 5.0, preparing proposals and coordinating stakeholder conversations across the campaign.",
     contributions: [
@@ -552,6 +572,7 @@ export const experiences = [
     organization: "Fasilkom Cup (Committee Experience)",
     period: "2025",
     category: "Committee",
+    image: fasilkom,
     description:
       "Coordinated consumption planning, vendor management, and logistics support for Fasilkom Cup as part of the event operations team.",
     contributions: [
@@ -570,6 +591,7 @@ export const experiences = [
     organization: "ISGATH 2025 (Volunteer Experience)",
     period: "2025",
     category: "Volunteer",
+    image: isgath,
     description:
       "Managed public relations for ISGATH 2025, leading public communication, participant engagement, and event promotion before and during the program.",
     contributions: [
@@ -658,15 +680,6 @@ export const achievements = [
       "https://drive.google.com/drive/folders/1jAmlnz2EAKNr7gqqPKDZUEARxHzOX7UV",
   },
   {
-    id: "a-academic",
-    year: "Present",
-    category: "Academic",
-    title: "Academic Achievement, GPA 3.98",
-    description:
-      "Maintained a cumulative GPA of 3.98 in the Information Systems undergraduate program at Universitas Singaperbangsa Karawang.",
-    image: figfig,
-  },
-  {
     id: "a-sic-cert",
     year: "2025",
     category: "Certification",
@@ -711,6 +724,30 @@ export const achievementStats = [
 // -------------------- JOURNEY TIMELINE --------------------
 export const journey = [
   {
+    year: "2022",
+    title: "Musabaqah Competition Participation",
+    subtitle: "First steps into public speaking and competition",
+    items: [
+      {
+        kind: "Competition",
+        label: "Early presentation, communication, and self development",
+        note: "An early experience in public speaking, presentation, communication, competition participation, and personal development before entering university.",
+      },
+    ],
+  },
+  {
+    year: "2022",
+    title: "2nd Place, Modernization of Islam Short Movie",
+    subtitle: "Senior high school national competition",
+    items: [
+      {
+        kind: "Award",
+        label: "Director and Editor, national level",
+        note: "Award winning short movie exploring Islam in the modern era through creative storytelling and visual narrative.",
+      },
+    ],
+  },
+  {
     year: "2024",
     title: "Started Information Systems Undergraduate Program",
     subtitle: "Universitas Singaperbangsa Karawang",
@@ -725,12 +762,25 @@ export const journey = [
   {
     year: "2025",
     title: "Offline Data Analyst Bootcamp",
+    subtitle: "Hands on data analyst training",
     items: [
       {
         kind: "Bootcamp",
-        label: "Hands on Data Analyst training",
-        note: "Focused on Data Cleaning, Data Visualization, Excel, SQL, Business Intelligence, and Data Storytelling.",
+        label: "Data Cleaning, Visualization, Excel, SQL, BI, Storytelling",
+        note: "Focused on data cleaning, data visualization, Excel, SQL, business intelligence, and data storytelling on real datasets.",
       },
+      {
+        kind: "Certification",
+        label: "Samsung Innovation Campus, Python",
+        note: "Industry led Python intensive with capstone project outputs and applied data work from the SIC track.",
+      },
+    ],
+  },
+  {
+    year: "2025",
+    title: "National Competition Achievements",
+    subtitle: "Two national first place wins",
+    items: [
       {
         kind: "Award",
         label: "1st Place, National Business Plan Competition",
@@ -741,37 +791,44 @@ export const journey = [
         label: "1st Place, PKM-PM",
         note: "Community empowerment project focused on digital transformation and social impact.",
       },
+    ],
+  },
+  {
+    year: "2025",
+    title: "Sponsorship Strategy, Revoist 5.0",
+    subtitle: "Volunteer Experience",
+    image: revoist,
+    items: [
       {
-        kind: "Certification",
-        label: "Samsung Innovation Campus, Python",
-        note: "Industry led Python intensive with capstone project outputs.",
-      },
-      {
-        kind: "Project",
-        label: "PALMORA, FinConnect, and iSEC",
-        note: "Built a BI dashboard, a FinTech information system, and a cybersecurity application.",
+        kind: "Volunteer",
+        label: "Sponsorship acquisition and partnership communication",
+        note: "Led sponsorship acquisition, partnership communication, proposal preparation, and stakeholder coordination across the Revoist 5.0 campaign.",
       },
     ],
   },
   {
     year: "2025",
-    title: "Volunteer Activities",
-    subtitle: "January 2025 to December 2025",
+    title: "Consumption Coordinator, Fasilkom Cup 2025",
+    subtitle: "Committee Experience",
+    image: fasilkom,
     items: [
       {
-        kind: "Focus",
-        label: "Sponsorship Strategy, Revoist 5.0",
-        note: "Sponsorship acquisition, partnership communication, proposal preparation, and stakeholder coordination.",
+        kind: "Committee",
+        label: "Consumption planning, vendor coordination, logistics",
+        note: "Coordinated consumption planning, vendor management, and logistics support across all match days of the Fasilkom Cup tournament.",
       },
+    ],
+  },
+  {
+    year: "2025",
+    title: "Public Relations Management, ISGATH 2025",
+    subtitle: "Volunteer Experience",
+    image: isgath,
+    items: [
       {
-        kind: "Organization",
-        label: "Consumption Coordinator, Fasilkom Cup",
-        note: "Consumption planning, vendor coordination, logistics support, and event operations.",
-      },
-      {
-        kind: "Focus",
-        label: "Public Relations Management, ISGATH 2025",
-        note: "Public communication, participant engagement, event promotion, and information dissemination.",
+        kind: "Volunteer",
+        label: "Public communication, participant engagement, promotion",
+        note: "Managed public relations across pre event and live phases, including communication strategy, participant engagement, event promotion, and information dissemination.",
       },
     ],
   },
@@ -779,33 +836,36 @@ export const journey = [
     year: "2026",
     title: "HIMSIKA Public Relations Leadership",
     subtitle: "Coordinator of Public Relations Department",
+    image: himsikaPr,
     items: [
       {
-        kind: "Organization",
+        kind: "Leadership",
         label: "Coordinator of Public Relations Department, HIMSIKA",
-        note: "Internal and external relationship management, organizational branding, public communication, student engagement, and stakeholder coordination.",
+        note: "Internal and external relationship management, organizational branding, communication strategy, public communication, student engagement, and stakeholder coordination.",
       },
     ],
   },
   {
     year: "2026",
     title: "Moderator, HIMSIKA Skill Up (HSU)",
+    subtitle: "Flagship campus skill development event",
     image: hsu,
     items: [
       {
-        kind: "Organization",
-        label: "Moderated the flagship HIMSIKA Skill Up event",
-        note: "Theme: Smart Work, Boundless Synergy: Managing Potential Within Constraints.",
+        kind: "Moderation",
+        label: "Moderated HSU 2026",
+        note: "Theme: Smart Work, Boundless Synergy. Managing Potential Within Constraints.",
       },
     ],
   },
   {
     year: "2026",
     title: "Moderator, EduFair National Seminar",
+    subtitle: "National workshop on Generative AI",
     image: edufair,
     items: [
       {
-        kind: "Organization",
+        kind: "Moderation",
         label: "Moderated the EduFair national Generative AI workshop",
         note: "Featured speaker Emirsyah Rafsanjani, Generative AI Mentor Trainee at BlockDev.",
       },
@@ -814,6 +874,7 @@ export const journey = [
   {
     year: "2026+",
     title: "Technology and Innovation Projects",
+    subtitle: "Flagship builds across data, AI, FinTech, and security",
     items: [
       {
         kind: "Project",
@@ -827,23 +888,23 @@ export const journey = [
       },
       {
         kind: "Project",
-        label: "FinConnect, All in One FinTech",
-        note: "Secure, anti fraud, and controlled financial platform built around clarity.",
+        label: "FinConnect, AI Powered FinTech Platform",
+        note: "All in one platform for financial management, smart analytics, AI insights, and decision support.",
       },
       {
         kind: "Project",
         label: "iSEC, Information System Security",
-        note: "Cybersecurity application that protects and educates novice users.",
+        note: "Cybersecurity application that protects and educates novice users through transparent risk explanation.",
       },
       {
         kind: "Project",
         label: "Business Intelligence Dashboard (KopiKita)",
-        note: "CEO view ML powered analytics surface, deployed live on GitHub Pages.",
+        note: "CEO view machine learning powered analytics surface with a what if simulator.",
       },
       {
-        kind: "Certification",
+        kind: "Project",
         label: "Samsung Innovation Campus Projects",
-        note: "Python capstone outputs and applied data work from the SIC track.",
+        note: "Python capstone outputs and applied data work from the SIC industry track.",
       },
     ],
   },

@@ -15,7 +15,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-36 overflow-hidden"
+      className="relative py-20 md:py-28 lg:py-32 overflow-hidden"
       data-testid="about-section"
     >
       <div className="container">
@@ -27,24 +27,40 @@ export default function About() {
               <span className="font-serif-display italic text-accent-3">
                 data, ideas
               </span>{' '}
-              & innovation.
+              and innovation.
             </>
           }
           testid="about-header"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-14 items-start">
           {/* Left — Profile image card */}
           <motion.div {...fadeUp} className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden glass-strong shimmer-border">
+            <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden shimmer-border group">
+              {/* Warm studio backdrop that complements the maroon blazer photo */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'radial-gradient(circle at 30% 25%, #fbf3e8 0%, #f3e6cf 45%, #e8d0a8 100%)',
+                }}
+              />
+              <div
+                className="absolute inset-0 opacity-60"
+                style={{
+                  background:
+                    'radial-gradient(circle at 70% 80%, rgba(168,85,247,0.18), transparent 55%)',
+                }}
+              />
               <img
                 src={profileData.profileImage}
                 alt={profileData.name}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover mix-blend-multiply transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                style={{ filter: 'saturate(1.08) contrast(1.06)' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink-950/85 via-ink-950/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="font-mono-accent text-accent-3 mb-1">
                   · Currently

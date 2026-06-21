@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 
 /**
  * Global background depth layers with subtle premium motion.
- * - Grid + dot matrix (CSS-only opacity / transform animations)
- * - Soft animated wave lines (SVG with native SMIL or CSS transforms)
- * - Theme-aware colors (light vs dark)
+ * - Grid lines: black @ 35% opacity in light mode, white @ 35% opacity in dark mode
+ * - Animated waves and constellation nodes (CSS-only)
+ * - Theme-aware via [.light_&]: variants
  * - Sits at z-[-10], fixed to viewport
  * - Wrapped in React.memo because props never change. No state-driven re-renders.
  */
@@ -20,13 +20,13 @@ function BackgroundFX() {
 
       {/* Soft gradient orbs - slow drift via CSS */}
       <div className="bg-orb bg-orb-1 absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full blur-[140px] opacity-70 bg-accent-2/20 [.light_&]:bg-[#3b82f6]/10" />
-      <div className="bg-orb bg-orb-2 absolute -bottom-40 -right-20 w-[48rem] h-[48rem] rounded-full blur-[160px] opacity-60 bg-accent-sec/[0.12] [.light_&]:bg-[#60a5fa]/15" />
+      <div className="bg-orb bg-orb-2 absolute -bottom-40 -right-20 w-[48rem] h-[48rem] rounded-full blur-[160px] opacity-60 bg-accent-sec/[0.12] [.light_&]:bg-[#60a5fa]/12" />
       <div className="bg-orb bg-orb-3 absolute top-1/3 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] rounded-full blur-[120px] opacity-50 bg-accent-3/[0.10] [.light_&]:bg-[#8b5cf6]/10" />
 
-      {/* GRID - subtle blueprint, gently shifting */}
+      {/* GRID - white in dark, black in light, ~35% opacity, with radial fade mask so it does not feel busy */}
       <div className="absolute inset-0 bg-grid-anim">
         <svg
-          className="absolute inset-0 w-full h-full text-white/[0.05] [.light_&]:text-[#0f172a]/[0.10]"
+          className="absolute inset-0 w-full h-full text-white/[0.35] [.light_&]:text-[#0a0a0a]/[0.35]"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -57,13 +57,12 @@ function BackgroundFX() {
                 d="M 224 0 L 0 0 0 224"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.2"
-                opacity="1.4"
+                strokeWidth="1.3"
               />
             </pattern>
             <radialGradient id="grid-mask" cx="50%" cy="40%" r="80%">
-              <stop offset="0%" stopColor="white" stopOpacity="1" />
-              <stop offset="70%" stopColor="white" stopOpacity="0.45" />
+              <stop offset="0%" stopColor="white" stopOpacity="0.9" />
+              <stop offset="55%" stopColor="white" stopOpacity="0.45" />
               <stop offset="100%" stopColor="white" stopOpacity="0" />
             </radialGradient>
             <mask id="grid-fade">
@@ -75,20 +74,21 @@ function BackgroundFX() {
             height="100%"
             fill="url(#bg-grid)"
             mask="url(#grid-fade)"
+            opacity="0.35"
           />
           <rect
             width="100%"
             height="100%"
             fill="url(#bg-grid-major)"
             mask="url(#grid-fade)"
-            opacity="0.7"
+            opacity="0.55"
           />
         </svg>
       </div>
 
-      {/* DOT MATRIX layer */}
+      {/* DOT MATRIX - tiny accent dots for depth (very low intensity) */}
       <svg
-        className="absolute inset-0 w-full h-full text-accent-3/[0.18] [.light_&]:text-[#3b82f6]/[0.22]"
+        className="absolute inset-0 w-full h-full text-accent-3/[0.12] [.light_&]:text-[#3b82f6]/[0.18]"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -96,14 +96,14 @@ function BackgroundFX() {
             id="bg-dots"
             x="0"
             y="0"
-            width="28"
-            height="28"
+            width="32"
+            height="32"
             patternUnits="userSpaceOnUse"
           >
-            <circle cx="2" cy="2" r="1" fill="currentColor" />
+            <circle cx="2" cy="2" r="0.9" fill="currentColor" />
           </pattern>
           <radialGradient id="dot-mask" cx="80%" cy="80%" r="70%">
-            <stop offset="0%" stopColor="white" stopOpacity="0.8" />
+            <stop offset="0%" stopColor="white" stopOpacity="0.7" />
             <stop offset="100%" stopColor="white" stopOpacity="0" />
           </radialGradient>
           <mask id="dot-fade">
@@ -115,7 +115,7 @@ function BackgroundFX() {
 
       {/* AI NETWORK NODES - subtle constellation top-right */}
       <svg
-        className="absolute top-0 right-0 w-[40rem] h-[28rem] opacity-[0.35] [.light_&]:opacity-30 text-accent-sec/70 [.light_&]:text-[#3b82f6]/60"
+        className="absolute top-0 right-0 w-[40rem] h-[28rem] opacity-[0.30] [.light_&]:opacity-25 text-accent-sec/70 [.light_&]:text-[#3b82f6]/60"
         viewBox="0 0 800 560"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -142,9 +142,9 @@ function BackgroundFX() {
         </g>
       </svg>
 
-      {/* TOPOGRAPHIC / Blueprint waves - bottom-left, animated */}
+      {/* TOPOGRAPHIC waves - bottom-left, animated */}
       <svg
-        className="absolute bottom-0 left-0 w-[40rem] h-[26rem] opacity-25 [.light_&]:opacity-30 text-accent-3 [.light_&]:text-[#1e3a8a]"
+        className="absolute bottom-0 left-0 w-[40rem] h-[26rem] opacity-25 [.light_&]:opacity-20 text-accent-3 [.light_&]:text-[#1e3a8a]"
         viewBox="0 0 800 520"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -163,9 +163,9 @@ function BackgroundFX() {
         </g>
       </svg>
 
-      {/* Wide subtle horizontal wave line that drifts across the screen */}
+      {/* Wide horizontal wave line drifting across the screen */}
       <svg
-        className="absolute top-1/3 left-0 w-[200%] h-32 opacity-[0.18] [.light_&]:opacity-[0.22] text-accent-3 [.light_&]:text-[#1e3a8a]"
+        className="absolute top-1/3 left-0 w-[200%] h-32 opacity-[0.16] [.light_&]:opacity-[0.16] text-accent-3 [.light_&]:text-[#1e3a8a]"
         viewBox="0 0 2400 200"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +178,7 @@ function BackgroundFX() {
 
       {/* GRAIN */}
       <div
-        className="absolute inset-0 opacity-[0.06] [.light_&]:opacity-[0.04] mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.06] [.light_&]:opacity-[0.03] mix-blend-overlay"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",

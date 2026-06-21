@@ -40,7 +40,6 @@ export default function CaseStudyPage() {
   useEffect(() => {
     if (project) {
       document.title = `${project.title} · Case Study · ${profileData.name}`;
-      window.scrollTo({ top: 0, behavior: 'instant' });
     }
     return () => {
       document.title = `${profileData.name} - Information Systems · Data · AI`;

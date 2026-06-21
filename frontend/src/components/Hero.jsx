@@ -62,7 +62,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] flex items-end md:items-center overflow-hidden pt-28 md:pt-0 pb-12 md:pb-0"
+      className="relative flex items-center overflow-hidden pt-28 md:pt-32 pb-16 md:pb-20 lg:pb-24 min-h-[88vh] md:min-h-[92vh]"
       data-testid="hero-section"
     >
       {/* Background layers — handled by global BackgroundFX. Hero keeps its own portrait spotlight only. */}
@@ -71,7 +71,7 @@ export default function Hero() {
       </div>
 
       <div className="container relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-14 items-center">
           {/* Left — Text */}
           <div className="lg:col-span-7">
             <motion.div
@@ -116,20 +116,21 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-7 max-w-xl text-base md:text-lg text-white/65 leading-relaxed"
+              className="mt-6 max-w-xl text-[15px] md:text-base lg:text-lg text-white/70 leading-relaxed text-justify hyphens-auto"
               data-testid="hero-sub"
             >
-              Information Systems Undergraduate · Data Analytics Enthusiast · AI
-              Explorer · Digital Innovation Builder. Exploring technology, data,
-              and AI through projects, competitions, organizations, and
-              continuous learning.
+              Information Systems undergraduate exploring{' '}
+              <span className="text-white">
+                Data Analytics, Artificial Intelligence, Cybersecurity, Leadership, and Innovation
+              </span>{' '}
+              through national competitions, organizations, and applied projects across data, AI, FinTech, and security.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-9 flex flex-wrap items-center gap-3 md:gap-4"
+              className="mt-7 flex flex-wrap items-center gap-3 md:gap-4"
             >
               <MagneticButton
                 onClick={() => smoothScrollTo('projects')}
@@ -160,7 +161,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-2xl"
+              className="mt-9 grid grid-cols-2 md:grid-cols-4 gap-3.5 md:gap-5 max-w-2xl"
               data-testid="hero-stats"
             >
               {heroStats.map((s, i) => (
@@ -170,8 +171,12 @@ export default function Hero() {
                   data-testid={`hero-stat-${i}`}
                   data-stat-label={s.label}
                 >
-                  <div className="font-mono text-3xl md:text-4xl font-medium text-white tracking-tightest">
-                    <StatCounter value={s.value} suffix={s.suffix} />
+                  <div className="font-mono text-2xl md:text-3xl lg:text-[2.25rem] font-medium text-white tracking-tightest">
+                    <StatCounter
+                      value={s.value}
+                      suffix={s.suffix}
+                      isDecimal={s.isDecimal}
+                    />
                   </div>
                   <div className="mt-1 font-mono-accent text-white/50 text-[10px] md:text-[11px]">
                     {s.label}
@@ -181,7 +186,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — Portrait with spotlight reveal */}
+          {/* Right — Portrait card with elegant studio framing */}
           <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 20 }}
@@ -189,82 +194,62 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               ref={portraitRef}
               style={{ '--mx': '50%', '--my': '50%' }}
-              className="relative mx-auto w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden glass-strong shimmer-border group"
+              className="relative mx-auto w-full max-w-[26rem] aspect-[4/5] rounded-[2rem] overflow-hidden shimmer-border group"
               data-testid="hero-portrait"
             >
-              {/* Tech-themed reveal underlay */}
-              <div className="absolute inset-0">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 30% 20%, rgba(168,85,247,0.45), transparent 60%), radial-gradient(circle at 70% 80%, rgba(232,121,249,0.35), transparent 60%), #111111',
-                  }}
-                />
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
-                    backgroundSize: '32px 32px',
-                  }}
-                />
-              </div>
+              {/* Studio backdrop - warm cream gradient that complements the maroon blazer */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'radial-gradient(circle at 30% 25%, #fbf3e8 0%, #f3e6cf 45%, #e8d0a8 100%)',
+                }}
+              />
 
-              {/* Base portrait (grayscale + blurred on desktop; full color on mobile) */}
+              {/* Subtle accent vignette */}
+              <div
+                className="absolute inset-0 opacity-60"
+                style={{
+                  background:
+                    'radial-gradient(circle at 70% 80%, rgba(168,85,247,0.18), transparent 55%)',
+                }}
+              />
+
+              {/* Portrait photo - full color */}
               <img
                 src={profileData.profileImage}
                 alt={profileData.name}
                 loading="eager"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover object-center mix-blend-multiply transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
                 style={{
-                  filter: isCoarse
-                    ? 'saturate(1.05) contrast(1.04)'
-                    : 'grayscale(100%) contrast(1.05) brightness(0.85)',
+                  filter: 'saturate(1.08) contrast(1.06)',
                 }}
               />
 
-              {/* Reveal portrait masked by cursor spotlight (desktop only) */}
+              {/* Cursor glow ring (desktop only, very subtle) */}
               {!isCoarse && (
-                <img
-                  src={profileData.profileImage}
-                  alt=""
-                  aria-hidden="true"
-                  loading="eager"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-300 mix-blend-overlay"
                   style={{
-                    filter: 'saturate(1.1) contrast(1.05)',
-                    WebkitMaskImage:
-                      'radial-gradient(180px circle at var(--mx) var(--my), black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)',
-                    maskImage:
-                      'radial-gradient(180px circle at var(--mx) var(--my), black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)',
+                    background:
+                      'radial-gradient(180px circle at var(--mx) var(--my), rgba(232,121,249,0.22), transparent 60%)',
                   }}
                 />
               )}
 
-              {/* Cursor glow ring (overlay) */}
-              <div
-                className="absolute inset-0 pointer-events-none transition-opacity duration-300"
-                style={{
-                  background:
-                    'radial-gradient(160px circle at var(--mx) var(--my), rgba(232,121,249,0.18), transparent 60%)',
-                }}
-              />
-
               {/* Inner border + corner labels */}
-              <div className="absolute inset-2 rounded-[1.6rem] border border-white/10 pointer-events-none" />
-              <div className="absolute top-3 left-3 font-mono-accent text-white/60 text-[10px]">
+              <div className="absolute inset-2 rounded-[1.6rem] border border-slate-900/10 pointer-events-none" />
+              <div className="absolute top-3 left-3 font-mono-accent text-slate-900/60 text-[10px]">
                 · Portrait //
               </div>
-              <div className="absolute top-3 right-3 font-mono-accent text-white/60 text-[10px]">
+              <div className="absolute top-3 right-3 font-mono-accent text-slate-900/60 text-[10px]">
                 {profileData.location}
               </div>
-              <div className="absolute bottom-3 left-3 font-mono-accent text-white/60 text-[10px]">
+              <div className="absolute bottom-3 left-3 font-mono-accent text-slate-900/60 text-[10px]">
                 GPA · {profileData.gpa}
               </div>
-              <div className="absolute bottom-3 right-3 font-mono-accent text-white/60 text-[10px]">
+              <div className="absolute bottom-3 right-3 font-mono-accent text-slate-900/60 text-[10px]">
                 ID · 2026
               </div>
             </motion.div>
@@ -272,7 +257,7 @@ export default function Hero() {
             {/* Mobile hint */}
             {isCoarse && (
               <p className="mt-4 text-center font-mono-accent text-white/40 text-[10px]">
-                · Tilt your device · Move to reveal
+                · Move to interact
               </p>
             )}
           </div>

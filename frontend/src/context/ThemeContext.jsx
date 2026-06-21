@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 const ThemeContext = createContext({
   theme: 'dark',
@@ -16,7 +16,6 @@ export function ThemeProvider({ children }) {
   });
 
   // Apply class to <html> for Tailwind dark: variants.
-  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'dark') {
@@ -30,13 +29,20 @@ export function ThemeProvider({ children }) {
     window.localStorage.setItem('portfolio-theme', theme);
   }, [theme]);
 
-  const setTheme = (next) => setThemeState(next);
-  const toggle = () => setThemeState((p) => (p === 'dark' ? 'light' : 'dark'));
+  // Stable callbacks so consumers don't re-render every parent render.
+  const setTheme = useCallback((next) => setThemeState(next), []);
+  const toggle = useCallback(
+    () => setThemeState((p) => (p === 'dark' ? 'light' : 'dark')),
+    []
+  );
+
+  const value = useMemo(
+    () => ({ theme, toggle, setTheme }),
+    [theme, toggle, setTheme]
+  );
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 
