@@ -10,7 +10,9 @@ import NotFoundPage from './pages/NotFoundPage.jsx';
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <div className="relative min-h-screen text-white selection:bg-accent-3/40">
           <BackgroundFX />
           <ScrollProgress />
