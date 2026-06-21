@@ -22,24 +22,25 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# VSCode
-.vscode/
-
 # Build
 dist/
-build/
 
-# Dependencies
-node_modules/
+# VS Code
+.vscode/
 
-# Env
+# Environment
 .env
 .env.local
 .env.production
 .env.development
 
-# Logs
-*.log
+# Emergent AI
+.emergent/
+
+# Testing
+tests/
+test_result.md
+memory/
 
 # OS
 .DS_Store
