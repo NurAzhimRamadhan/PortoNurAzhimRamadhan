@@ -191,13 +191,13 @@ export default function CaseStudyPage() {
             className="relative rounded-[2rem] overflow-hidden glass-strong"
             data-testid="case-study-cover"
           >
-            <div className="aspect-[21/10] md:aspect-[21/9] overflow-hidden">
+            <div className="aspect-[16/9] md:aspect-[16/8] overflow-hidden bg-[#f4ecde]">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent opacity-50 pointer-events-none" />
             </div>
           </motion.div>
         </div>

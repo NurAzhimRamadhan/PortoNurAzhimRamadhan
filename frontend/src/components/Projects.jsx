@@ -31,7 +31,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-24 md:py-36"
+      className="relative py-20 md:py-28 lg:py-32"
       data-testid="projects-section"
     >
       <div className="container">
@@ -52,9 +52,9 @@ export default function Projects() {
 
         <FeaturedCarousel />
 
-        {/* Case Studies section - heavier breathing room and premium intro */}
-        <div className="mt-32 md:mt-48 lg:mt-56" data-testid="case-studies-section">
-          <div className="max-w-3xl mb-14 md:mb-20">
+        {/* Case Studies section - tighter rhythm, no large empty area */}
+        <div className="mt-20 md:mt-28 lg:mt-32" data-testid="case-studies-section">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <div className="font-mono-accent text-accent-3 mb-4 inline-flex items-center gap-2">
               <span className="h-px w-8 bg-accent-3/60" />
               04A · Case Studies
@@ -74,7 +74,7 @@ export default function Projects() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 md:gap-9">
             {featured.map((p, idx) => (
               <CaseStudyCard key={p.id} project={p} index={idx} />
             ))}
@@ -83,7 +83,7 @@ export default function Projects() {
 
         {/* Additional projects */}
         {others.length > 0 && (
-          <div className="mt-24 md:mt-32">
+          <div className="mt-20 md:mt-28">
             <div className="flex items-end justify-between mb-8">
               <div>
                 <div className="font-mono-accent text-accent-3 mb-2">
@@ -404,12 +404,8 @@ function CaseStudyCard({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.7, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -4 }}
-      className="group relative rounded-3xl glass-strong overflow-hidden transition-[border-color,box-shadow] duration-500 hover:border-accent-3/30"
-      style={{
-        boxShadow:
-          '0 12px 40px -24px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04)',
-      }}
+      whileHover={{ y: -6 }}
+      className="case-study-card group relative rounded-3xl glass-strong overflow-hidden"
       data-testid={`case-study-${project.id}`}
     >
       <Wrapper

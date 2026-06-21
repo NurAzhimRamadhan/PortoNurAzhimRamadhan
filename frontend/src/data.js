@@ -15,7 +15,7 @@ import profile from "./assets/images/profile-maroon.png";
 import finconnect from "./assets/images/finconnect.jpg";
 import isec from "./assets/images/isec.jpg";
 import isecQr from "./assets/images/isec-qr.jpg";
-import kopikita from "./assets/images/kopikita.jpg";
+import kopikita from "./assets/images/bi-dashboard.jpg";
 import hsu from "./assets/images/hsu.jpg";
 import edufair from "./assets/images/edufair.jpg";
 import figfig from "./assets/images/figfig.jpg"; // eslint-disable-line no-unused-vars
@@ -395,14 +395,14 @@ export const projects = [
     id: "p-kopikita",
     slug: "bi-dashboard",
     title: "Business Intelligence Dashboard",
-    subtitle: "Predictive BI for CEO Level Decision Making (KopiKita)",
+    subtitle: "Predictive Analytics and Decision Support System for Café Revenue Optimization",
     category: "Business Intelligence, Machine Learning, Analytics",
     tags: ["Business Intelligence", "Machine Learning", "Data Analytics", "Dashboard"],
     image: kopikita,
     role: "BI Developer, Data Scientist, Dashboard Designer",
     period: "2026",
     description:
-      "Predictive business intelligence dashboard that simulates CEO level decision making through revenue forecasting, churn probability, operational monitoring, voice of customer analysis, competitor benchmarking, and a recommendation engine.",
+      "Predictive analytics and decision support dashboard for café revenue optimization. Combines revenue forecasting, customer churn prediction, recommendation engine, and operational analytics into one CEO grade business intelligence surface.",
     flagship: true,
     link: "https://nurazhimramadhan.github.io/BIDataScientiesDashboard/",
     overview:
@@ -510,6 +510,10 @@ export const experiences = [
     tech: ["Public Relations", "Communication", "Stakeholder Coordination", "Branding", "Leadership"],
     impact:
       "Elevated HIMSIKA visibility and partnership quality, while strengthening the public facing voice of the Information Systems community.",
+    documentation: [
+      { label: "View Documentation", url: "#" },
+      { label: "View Event Evidence", url: "#" },
+    ],
   },
   {
     id: "e-edufair",
@@ -528,6 +532,10 @@ export const experiences = [
     tech: ["Public Speaking", "Event Moderation", "Stakeholder Communication"],
     impact:
       "Helped distill a national Generative AI session into actionable takeaways for an audience of students and early career professionals.",
+    documentation: [
+      { label: "View Certificate", url: "#" },
+      { label: "View Event Evidence", url: "#" },
+    ],
   },
   {
     id: "e-hsu",
@@ -546,6 +554,10 @@ export const experiences = [
     tech: ["Moderation", "Communication", "Audience Engagement"],
     impact:
       "Strengthened HSU participant takeaway clarity and reinforced the HIMSIKA flagship event delivery quality.",
+    documentation: [
+      { label: "View Certificate", url: "#" },
+      { label: "View Event Evidence", url: "#" },
+    ],
   },
   {
     id: "e-revoist",
@@ -565,6 +577,10 @@ export const experiences = [
     tech: ["Communication", "Negotiation", "Teamwork", "Event Management"],
     impact:
       "Helped secure partnership commitments that supported Revoist 5.0 program delivery and elevated its public profile.",
+    documentation: [
+      { label: "View Documentation", url: "#" },
+      { label: "View Event Evidence", url: "#" },
+    ],
   },
   {
     id: "e-fasilkom-cup",
@@ -584,6 +600,10 @@ export const experiences = [
     tech: ["Planning", "Coordination", "Teamwork", "Event Operations"],
     impact:
       "Kept the tournament running smoothly by ensuring reliable consumption logistics for participants, officials, and committee members.",
+    documentation: [
+      { label: "View Documentation", url: "#" },
+      { label: "View Event Evidence", url: "#" },
+    ],
   },
   {
     id: "e-isgath",
@@ -603,6 +623,10 @@ export const experiences = [
     tech: ["Public Relations", "Communication", "Branding", "Team Collaboration"],
     impact:
       "Boosted visibility and participant engagement for ISGATH 2025 and supported a consistent public facing event identity.",
+    documentation: [
+      { label: "View Documentation", url: "#" },
+      { label: "View Event Evidence", url: "#" },
+    ],
   },
   {
     id: "e-sic-experience",
@@ -621,6 +645,12 @@ export const experiences = [
     tech: ["Python", "Data Processing", "Mentorship"],
     impact:
       "Earned the official SIC certification and advanced Python fluency for data and applied AI work.",
+    documentation: [
+      {
+        label: "View Certificate",
+        url: "https://drive.google.com/drive/folders/1ARj6qHiQg8FzjUP-Yujpg1mWfBgXGUJ4",
+      },
+    ],
   },
   {
     id: "e-bootcamp",
@@ -639,6 +669,12 @@ export const experiences = [
     tech: ["Python", "Excel", "Visualization", "EDA"],
     impact:
       "Strengthened the analytical foundation later used in PALMORA, KopiKita, and broader BI work.",
+    documentation: [
+      {
+        label: "View Certificate",
+        url: "https://drive.google.com/drive/folders/104Z4Cd-L7JUmYA-g9xXojWK8n8UXxb8j",
+      },
+    ],
   },
 ];
 
@@ -723,18 +759,6 @@ export const achievementStats = [
 
 // -------------------- JOURNEY TIMELINE --------------------
 export const journey = [
-  {
-    year: "2022",
-    title: "Musabaqah Competition Participation",
-    subtitle: "First steps into public speaking and competition",
-    items: [
-      {
-        kind: "Competition",
-        label: "Early presentation, communication, and self development",
-        note: "An early experience in public speaking, presentation, communication, competition participation, and personal development before entering university.",
-      },
-    ],
-  },
   {
     year: "2022",
     title: "2nd Place, Modernization of Islam Short Movie",

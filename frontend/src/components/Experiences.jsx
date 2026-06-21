@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Sparkles, Mic } from 'lucide-react';
+import { Briefcase, Sparkles, Mic, ExternalLink } from 'lucide-react';
 import { experiences } from '../data.js';
 import SectionHeader from './SectionHeader.jsx';
 
@@ -146,6 +146,29 @@ export default function Experiences() {
                     {e.impact}
                   </p>
                 </div>
+
+                {/* Documentation / certificate links */}
+                {e.documentation && e.documentation.length > 0 && (
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {e.documentation.map((doc) => (
+                      <a
+                        key={doc.label}
+                        href={doc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/doc inline-flex items-center gap-1.5 rounded-full bg-white/[0.04] border border-white/12 text-white/80 hover:text-accent-3 hover:border-accent-3/40 px-3.5 py-1.5 text-xs font-medium transition-all"
+                        data-testid={`experience-${e.id}-doc-${doc.label.toLowerCase().replace(/[^a-z]+/g, '-')}`}
+                      >
+                        <ExternalLink
+                          size={12}
+                          strokeWidth={1.7}
+                          className="group-hover/doc:-rotate-12 transition-transform"
+                        />
+                        <span>{doc.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}

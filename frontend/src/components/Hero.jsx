@@ -186,7 +186,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — Portrait card with elegant studio framing */}
+          {/* Right — Portrait card: grayscale by default, full color + purple/blue glow on hover */}
           <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 20 }}
@@ -194,46 +194,43 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               ref={portraitRef}
               style={{ '--mx': '50%', '--my': '50%' }}
-              className="relative mx-auto w-full max-w-[26rem] aspect-[4/5] rounded-[2rem] overflow-hidden shimmer-border group"
+              className="hero-portrait relative mx-auto w-full max-w-[26rem] aspect-[4/5] rounded-[2rem] overflow-hidden shimmer-border group transition-shadow duration-500"
               data-testid="hero-portrait"
             >
-              {/* Studio backdrop - warm cream gradient that complements the maroon blazer */}
+              {/* Neutral studio backdrop - cool gray that complements both states */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    'radial-gradient(circle at 30% 25%, #fbf3e8 0%, #f3e6cf 45%, #e8d0a8 100%)',
+                    'linear-gradient(180deg, #f5f5f7 0%, #e9e9ee 100%)',
                 }}
               />
 
-              {/* Subtle accent vignette */}
+              {/* Purple/blue glow that fades in on hover */}
               <div
-                className="absolute inset-0 opacity-60"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-[450ms] ease-out pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(circle at 70% 80%, rgba(168,85,247,0.18), transparent 55%)',
+                    'radial-gradient(circle at 30% 25%, rgba(168,85,247,0.32), transparent 55%), radial-gradient(circle at 70% 75%, rgba(59,130,246,0.30), transparent 55%)',
                 }}
               />
 
-              {/* Portrait photo - full color */}
+              {/* Portrait photo - grayscale by default, full color on hover */}
               <img
                 src={profileData.profileImage}
                 alt={profileData.name}
                 loading="eager"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center mix-blend-multiply transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
-                style={{
-                  filter: 'saturate(1.08) contrast(1.06)',
-                }}
+                className="hero-portrait-img absolute inset-0 w-full h-full object-cover object-center mix-blend-multiply"
               />
 
-              {/* Cursor glow ring (desktop only, very subtle) */}
+              {/* Subtle cursor glow on desktop */}
               {!isCoarse && (
                 <div
-                  className="absolute inset-0 pointer-events-none transition-opacity duration-300 mix-blend-overlay"
+                  className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
                     background:
-                      'radial-gradient(180px circle at var(--mx) var(--my), rgba(232,121,249,0.22), transparent 60%)',
+                      'radial-gradient(200px circle at var(--mx) var(--my), rgba(232,121,249,0.20), transparent 60%)',
                   }}
                 />
               )}

@@ -34,22 +34,23 @@ export default function About() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-14 items-start">
-          {/* Left — Profile image card */}
+          {/* Left — Profile image card: grayscale by default, full color on hover */}
           <motion.div {...fadeUp} className="lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden shimmer-border group">
-              {/* Warm studio backdrop that complements the maroon blazer photo */}
+            <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden shimmer-border group transition-shadow duration-500 hover:shadow-[0_30px_80px_-28px_rgba(168,85,247,0.35)]">
+              {/* Neutral studio backdrop */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    'radial-gradient(circle at 30% 25%, #fbf3e8 0%, #f3e6cf 45%, #e8d0a8 100%)',
+                    'linear-gradient(180deg, #f5f5f7 0%, #e9e9ee 100%)',
                 }}
               />
+              {/* Purple/blue glow on hover */}
               <div
-                className="absolute inset-0 opacity-60"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-[450ms] ease-out pointer-events-none"
                 style={{
                   background:
-                    'radial-gradient(circle at 70% 80%, rgba(168,85,247,0.18), transparent 55%)',
+                    'radial-gradient(circle at 30% 25%, rgba(168,85,247,0.30), transparent 55%), radial-gradient(circle at 70% 75%, rgba(59,130,246,0.26), transparent 55%)',
                 }}
               />
               <img
@@ -57,8 +58,7 @@ export default function About() {
                 alt={profileData.name}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover mix-blend-multiply transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-                style={{ filter: 'saturate(1.08) contrast(1.06)' }}
+                className="about-portrait-img absolute inset-0 w-full h-full object-cover mix-blend-multiply"
               />
               <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink-950/85 via-ink-950/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">

@@ -332,6 +332,87 @@ body {
 :root.light .bg-accent-2\/[0\.12] { background-color: rgba(99, 102, 241, 0.10) !important; }
 :root.light .bg-accent-2\/[0\.18] { background-color: rgba(99, 102, 241, 0.14) !important; }
 
+/* ============================================================
+   CASE STUDY CARD - premium depth with layered shadows
+   ============================================================ */
+.case-study-card {
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 14px 40px -22px rgba(2, 6, 23, 0.55),
+    0 4px 14px -8px rgba(2, 6, 23, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.case-study-card:hover {
+  border-color: rgba(168, 85, 247, 0.28);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+    0 28px 70px -28px rgba(168, 85, 247, 0.30),
+    0 30px 80px -34px rgba(59, 130, 246, 0.20),
+    0 6px 18px -8px rgba(2, 6, 23, 0.40);
+}
+:root.light .case-study-card {
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.85) inset,
+    0 16px 40px -22px rgba(30, 58, 138, 0.16),
+    0 4px 14px -8px rgba(30, 58, 138, 0.10);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+:root.light .case-study-card:hover {
+  border-color: rgba(168, 85, 247, 0.32);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 28px 60px -22px rgba(168, 85, 247, 0.24),
+    0 30px 70px -28px rgba(59, 130, 246, 0.18);
+}
+
+/* ============================================================
+   HERO PORTRAIT - grayscale by default, full color on hover
+   Premium editorial transition with purple/blue glow.
+   ============================================================ */
+.hero-portrait {
+  box-shadow:
+    0 22px 60px -28px rgba(2, 6, 23, 0.45),
+    0 2px 0 0 rgba(255, 255, 255, 0.45) inset,
+    0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+.hero-portrait:hover {
+  box-shadow:
+    0 30px 80px -28px rgba(168, 85, 247, 0.35),
+    0 30px 80px -34px rgba(59, 130, 246, 0.30),
+    0 2px 0 0 rgba(255, 255, 255, 0.55) inset,
+    0 0 0 1px rgba(168, 85, 247, 0.15);
+}
+.hero-portrait-img {
+  filter: grayscale(1) contrast(1.05) brightness(0.96);
+  transition: filter 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: filter, transform;
+}
+.hero-portrait:hover .hero-portrait-img {
+  filter: grayscale(0) saturate(1.08) contrast(1.06);
+  transform: scale(1.02);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-img,
+  .hero-portrait {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* About profile card uses the same grayscale-to-color treatment */
+.about-portrait-img {
+  filter: grayscale(1) contrast(1.05) brightness(0.96);
+  transition: filter 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: filter, transform;
+}
+.group:hover .about-portrait-img {
+  filter: grayscale(0) saturate(1.08) contrast(1.06);
+  transform: scale(1.03);
+}
+
 /* Light: certificate / sdg cards still pop */
 :root.light .text-emerald-300 { color: #047857 !important; }
 :root.light .bg-emerald-400\/15 { background-color: rgba(16, 185, 129, 0.10) !important; }
