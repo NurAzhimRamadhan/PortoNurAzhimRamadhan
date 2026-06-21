@@ -26,6 +26,14 @@ clean light-mode artifacts, and add a 2022 Musabaqah milestone before the
 4. No auto refresh or unexplained re-render storms.
 5. Profile photo (formal maroon blazer) as the single brand asset across all surfaces.
 
+## What is Implemented (2026-06-21, Iteration 3)
+- **Editorial portrait treatment.** Hero and About profile cards now show the maroon blazer photo in grayscale by default and transition smoothly (450ms cubic-bezier) to full color with a purple/blue gradient glow on hover. Replaced the warm cream backdrop with a neutral cool gray studio gradient. Apple/Linear/Framer reference quality.
+- **Journey cleanup.** Removed ONLY the 2022 Musabaqah Competition Participation card. Kept the 2022 Modernization of Islam Short Movie award and all other journey milestones intact.
+- **BI Dashboard refresh.** New laptop mockup image now powers the BI Dashboard project card, carousel slide, and case study cover. New subtitle: "Predictive Analytics and Decision Support System for Café Revenue Optimization". Case study cover aspect ratio softened to 16:9/16:8 with a cream backdrop so the laptop showcase reads cleanly.
+- **Documentation links on every Experience card.** Each card now shows 1-2 small `<a target="_blank">` buttons (View Documentation / View Event Evidence / View Certificate). Samsung Innovation Campus and Data Analyst Bootcamp link to real Google Drive folders; all other roles use a `#` placeholder ready to be swapped for real evidence later.
+- **Case study card depth.** New `.case-study-card` CSS class with layered shadows. On hover the card lifts by 6px and gains a soft purple/blue glow. Light-mode variant uses brighter shadows with the same shape.
+- **Tighter project rhythm.** Reduced Projects section padding to `py-20/28/32` and Case Studies top spacing to `mt-20/28/32`. Grid gap tuned to `7/9`. No large empty white area between the carousel and the case study grid anymore.
+
 ## What is Implemented (2026-06-21, Iteration 2)
 - **Global profile photo** New formal maroon blazer portrait (`profile-maroon.png`) wired into Navbar, Hero portrait card, About profile card, Contact card, Footer, Mobile Nav sheet, and Case Study floating pill. Cream-colored studio backdrop with `mix-blend-multiply` to integrate the white-background source cleanly.
 - **Hero refinement** Reduced whitespace (min-h 88-92vh, py-16-24, mt-6-9). Hero stats reordered: Cumulative GPA 3.98 is now the first stat. StatCounter extended to support decimals.
@@ -51,7 +59,8 @@ clean light-mode artifacts, and add a 2022 Musabaqah milestone before the
 
 ## Testing
 - iteration_1: 100% pass (initial refinement).
-- iteration_2: 50/51 pass, 100% effective (1 false positive in scroll-race test harness; stability sentinel confirmed across 15s idle).
+- iteration_2: 50/51 effective 100% (1 false positive in scroll-race harness).
+- iteration_3: 100% pass (13 critical checks). Editorial portrait grayscale->color, Musabaqah removed, BI Dashboard refreshed, 14 documentation links present, case study hover depth verified, stability sentinel holds across 12s idle.
 
 ## Next Action Items / Backlog
 - P1: Connect a real contact form (Resend or SendGrid). Currently mailto only.
