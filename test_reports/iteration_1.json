@@ -1,0 +1,38 @@
+{
+  "summary": "Comprehensive frontend test of refined portfolio (Vite + React 18 + React Router v6). All 13 user-listed acceptance items PASS. Tested at https://portfolio-refinement-1.preview.emergentagent.com on both desktop (1920x1080) and mobile (390x844).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "tests_executed": {
+    "page_loads": "PASS - navbar, hero, projects, footer all render",
+    "navbar_profile_image": "PASS - <img> in [data-testid='navbar-logo'], no 'NA' badge anywhere on page",
+    "footer": "PASS - centered copyright ('© 2026 Nur Azhim Ramadhan. All rights reserved.'), profile <img> present, no 'Crafted with React / Framer Motion' line",
+    "em_dashes_home": "PASS - no U+2014 in body text",
+    "em_dashes_case_study_pages": "PASS - none in any of 5 case-study pages",
+    "featured_carousel": "PASS - 5 slides, 5 dots, prev/next/play-pause/dot-jump all functional; autoplay toggle text flips Pause<->Play; keyboard arrow navigation wired",
+    "case_studies_section": "PASS - heading 'Featured projects and product thinking.' present, subtitle 'Behind the process of building real solutions' present, 5 CaseStudyCards rendered with Problem/Approach/Outcome blocks and CTA",
+    "case_study_routes": "PASS - /case-study/{wana,palmora,finconnect,isec,bi-dashboard} all render with all 10 expected sections (Overview, Problem, Research, Solution, Key Features, Technology Stack, Design Process, Impact, Lessons Learned, Future Development) and back-to-home link",
+    "theme_toggle": "PASS - <html> class swaps 'dark' <-> 'light' on click",
+    "mobile_nav": "PASS - hamburger opens overlay, mobile sheet shows profile <img> + name + role, no 'NA' badge",
+    "stability_no_auto_reload": "PASS - window sentinel preserved across 12s idle + multiple scroll cycles (no remount, no full-page reload)",
+    "content_audits": "PASS - PKM Center 'Active Participation' removed; HIMSIKA 'Coordinator of Public Relations Department' present; Revoist 5.0, Fasilkom Cup, ISGATH 2025 experiences present; journey/data.js confirmed 2022 storytelling + 2023 university entries absent"
+  },
+  "test_report_links": ["/app/test_reports/iteration_1.json", "/app/test_reports/home_desktop.png"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Non-blocking: React Router v6 emits two console warnings on every navigation about v7 future flags (v7_startTransition, v7_relativeSplatPath). Optional: opt-in via future={{v7_startTransition: true, v7_relativeSplatPath: true}} on <BrowserRouter> to silence.",
+    "Minor: ThemeProvider toggles 'light' on <html>, but body className still contains hardcoded 'bg-[#050505] text-white' (set in index.html / index.css). Light-mode visuals are handled via Tailwind '[.light_&]:' variants in CSS - works correctly, but the hardcoded body classes are a subtle smell. Visual sanity in light mode looked acceptable per design intent.",
+    "Minor: featured slides scale-down (0.95) + opacity 0.55 + no external gradient bars confirmed via Projects.jsx; matches design spec."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "test_credentials": "N/A - no auth flows in app",
+  "seed_data_creation": "None - data is hardcoded in /app/frontend/src/data.js",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All refinement items from the original request are visually + functionally verified. data.js is the source of truth for journey/experiences/achievements/projects (including case-study slugs). 5 case study slugs: wana, palmora, finconnect, isec, bi-dashboard. data-testid coverage is excellent: primary-navbar, navbar-logo, navbar-mobile-toggle, navbar-mobile-overlay, theme-toggle, projects-section, featured-carousel, featured-slide-{id}, featured-dot-{i}, featured-prev/next/autoplay-toggle, case-studies-section, case-study-{id}, footer, footer-copyright. The stability fix (useScrolledPast + no StrictMode) is working - no remount storm observed.",
+  "rca of the issue": "N/A - no bugs found in this iteration"
+}

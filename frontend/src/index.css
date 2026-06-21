@@ -1,0 +1,453 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   THEME TOKENS — Dark (default) + Light
+   ============================================================ */
+:root,
+:root.dark {
+  --bg-base: #050505;
+  --bg-surface: #090909;
+  --bg-elevated: #111111;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --accent-1: #7c3aed;
+  --accent-2: #9333ea;
+  --accent-3: #a855f7;
+  --accent-sec: #e879f9;
+  --accent-grad-1: #7c3aed;
+  --accent-grad-2: #e879f9;
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.20);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-strong: rgba(255, 255, 255, 0.06);
+  color-scheme: dark;
+}
+
+:root.light {
+  --bg-base: #f6f9ff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: rgba(15, 23, 42, 0.7);
+  --text-muted: rgba(15, 23, 42, 0.5);
+  --accent-1: #3b82f6;
+  --accent-2: #2563eb;
+  --accent-3: #6366f1;
+  --accent-sec: #818cf8;
+  --accent-grad-1: #2563eb;
+  --accent-grad-2: #6366f1;
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  color-scheme: light;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-base);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-feature-settings: 'ss01', 'ss02', 'cv01';
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#root {
+  isolation: isolate;
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #ffffff;
+}
+:root.light ::selection {
+  background: rgba(59, 130, 246, 0.30);
+  color: #0f172a;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-base);
+}
+:root.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c7d2fe, #a5b4fc);
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-grad-1), var(--accent-grad-2));
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.font-display {
+  font-family: 'Geist', sans-serif;
+  letter-spacing: -0.04em;
+}
+.font-mono-accent {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+.font-serif-display {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+:root.light .glass {
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,0.7) inset,
+    0 8px 30px -16px rgba(30,58,138,0.18);
+}
+:root.light .glass-strong {
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,0.8) inset,
+    0 18px 50px -20px rgba(30,58,138,0.22);
+}
+
+.grain {
+  position: relative;
+}
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.shimmer-border {
+  position: relative;
+}
+.shimmer-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.5),
+    rgba(232, 121, 249, 0.0) 40%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(168, 85, 247, 0.4)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0.7;
+}
+:root.light .shimmer-border::after {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.45),
+    rgba(99, 102, 241, 0.0) 40%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(59, 130, 246, 0.4)
+  );
+  opacity: 0.6;
+}
+
+/* Spotlight border hover effect */
+.spot-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.spot-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(168, 85, 247, 0.18),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+:root.light .spot-card::before {
+  background: radial-gradient(
+    400px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(59, 130, 246, 0.18),
+    transparent 40%
+  );
+}
+.spot-card:hover::before {
+  opacity: 1;
+}
+.spot-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Embla carousel */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .embla__slide.is-featured {
+    flex: 0 0 86%;
+    margin-right: 1.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .embla__slide.is-featured {
+    flex: 0 0 78%;
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Light-mode text-color helpers used inline */
+:root.light .text-white { color: #0f172a !important; }
+:root.light .text-white\/90 { color: rgba(15, 23, 42, 0.9) !important; }
+:root.light .text-white\/85 { color: rgba(15, 23, 42, 0.85) !important; }
+:root.light .text-white\/80 { color: rgba(15, 23, 42, 0.8) !important; }
+:root.light .text-white\/75 { color: rgba(15, 23, 42, 0.75) !important; }
+:root.light .text-white\/70 { color: rgba(15, 23, 42, 0.7) !important; }
+:root.light .text-white\/65 { color: rgba(15, 23, 42, 0.65) !important; }
+:root.light .text-white\/60 { color: rgba(15, 23, 42, 0.6) !important; }
+:root.light .text-white\/55 { color: rgba(15, 23, 42, 0.55) !important; }
+:root.light .text-white\/50 { color: rgba(15, 23, 42, 0.5) !important; }
+:root.light .text-white\/45 { color: rgba(15, 23, 42, 0.45) !important; }
+:root.light .text-white\/40 { color: rgba(15, 23, 42, 0.4) !important; }
+:root.light .text-white\/35 { color: rgba(15, 23, 42, 0.35) !important; }
+:root.light .text-white\/30 { color: rgba(15, 23, 42, 0.3) !important; }
+:root.light .text-accent-3 { color: var(--accent-3) !important; }
+:root.light .text-accent-sec { color: var(--accent-2) !important; }
+
+/* Light-mode background helpers */
+:root.light .bg-ink-950 { background-color: var(--bg-base) !important; }
+:root.light .bg-ink-900 { background-color: #eef3ff !important; }
+:root.light .bg-ink-800 { background-color: #e7eeff !important; }
+
+/* Light-mode border helpers */
+:root.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.08) !important; }
+:root.light .border-white\/15 { border-color: rgba(15, 23, 42, 0.12) !important; }
+:root.light .border-white\/20 { border-color: rgba(15, 23, 42, 0.16) !important; }
+
+/* Light-mode small fixes for hovers using white opacity */
+:root.light .bg-white\/\[0\.03\] { background-color: rgba(255, 255, 255, 0.7) !important; }
+:root.light .bg-white\/\[0\.04\] { background-color: rgba(255, 255, 255, 0.7) !important; }
+:root.light .bg-white\/\[0\.06\] { background-color: rgba(255, 255, 255, 0.8) !important; }
+:root.light .bg-white\/\[0\.08\] { background-color: rgba(15, 23, 42, 0.04) !important; }
+:root.light .hover\:bg-white\/\[0\.06\]:hover { background-color: rgba(255, 255, 255, 0.95) !important; }
+:root.light .hover\:bg-white\/\[0\.08\]:hover { background-color: rgba(15, 23, 42, 0.06) !important; }
+:root.light .hover\:bg-white\/\[0\.1\]:hover { background-color: rgba(15, 23, 42, 0.08) !important; }
+
+/* Primary "white" button in light mode = blue gradient */
+:root.light .bg-white { background: linear-gradient(135deg, #2563eb, #6366f1) !important; color: white !important; }
+:root.light .bg-white.text-ink-950 { color: white !important; }
+:root.light .hover\:bg-white\/90:hover { background: linear-gradient(135deg, #1d4ed8, #4f46e5) !important; }
+
+/* Magnetic accent button in light mode */
+:root.light .bg-accent-2 { background-color: #2563eb !important; }
+:root.light .hover\:bg-accent-1:hover { background-color: #1d4ed8 !important; }
+
+/* Light-mode bg overlays for image cards (replace dark ink gradients with soft fade) */
+:root.light .from-ink-950 { --tw-gradient-from: rgba(15, 23, 42, 0.85) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent) !important; }
+:root.light .via-ink-950\/30 { --tw-gradient-stops: var(--tw-gradient-from), rgba(15, 23, 42, 0.25), var(--tw-gradient-to, transparent) !important; }
+:root.light .via-ink-950\/40 { --tw-gradient-stops: var(--tw-gradient-from), rgba(15, 23, 42, 0.30), var(--tw-gradient-to, transparent) !important; }
+:root.light .via-ink-950\/20 { --tw-gradient-stops: var(--tw-gradient-from), rgba(15, 23, 42, 0.15), var(--tw-gradient-to, transparent) !important; }
+:root.light .to-ink-950\/80 { --tw-gradient-to: rgba(15, 23, 42, 0.75) !important; }
+
+/* Magnetic button "primary" — already overridden to blue gradient; ensure ghost variants stay light */
+:root.light .border-accent-3\/40 { border-color: rgba(99, 102, 241, 0.35) !important; }
+:root.light .border-accent-3\/30 { border-color: rgba(99, 102, 241, 0.30) !important; }
+
+/* Light mode pills - bg accent helpers */
+:root.light .bg-accent-2\/15 { background-color: rgba(99, 102, 241, 0.12) !important; }
+:root.light .bg-accent-2\/20 { background-color: rgba(99, 102, 241, 0.18) !important; }
+:root.light .bg-accent-2\/[0\.07] { background-color: rgba(99, 102, 241, 0.05) !important; }
+:root.light .bg-accent-2\/[0\.10] { background-color: rgba(99, 102, 241, 0.08) !important; }
+:root.light .bg-accent-2\/[0\.12] { background-color: rgba(99, 102, 241, 0.10) !important; }
+:root.light .bg-accent-2\/[0\.18] { background-color: rgba(99, 102, 241, 0.14) !important; }
+
+/* Light: certificate / sdg cards still pop */
+:root.light .text-emerald-300 { color: #047857 !important; }
+:root.light .bg-emerald-400\/15 { background-color: rgba(16, 185, 129, 0.10) !important; }
+:root.light .border-emerald-400\/30 { border-color: rgba(16, 185, 129, 0.30) !important; }
+
+/* Light: tone down dark image-fade gradients on cards (less heavy in bright mode) */
+:root.light .bg-gradient-to-t.from-ink-950 { --tw-gradient-from: rgba(15, 23, 42, 0.55) !important; }
+:root.light .bg-gradient-to-r.from-ink-950 { --tw-gradient-from: rgba(15, 23, 42, 0.45) !important; }
+:root.light .bg-gradient-to-l.from-ink-950 { --tw-gradient-from: rgba(15, 23, 42, 0.45) !important; }
+:root.light .bg-gradient-to-br.from-ink-950 { --tw-gradient-from: rgba(15, 23, 42, 0.45) !important; }
+
+/* Light mode: surface contrast for moderator/glass pills on hero portrait */
+:root.light .glass {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(15, 23, 42, 0.10);
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,0.85) inset,
+    0 6px 24px -14px rgba(30,58,138,0.18);
+}
+:root.light .glass-strong {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(15, 23, 42, 0.10);
+  box-shadow:
+    0 1px 0 0 rgba(255,255,255,0.9) inset,
+    0 16px 44px -22px rgba(30,58,138,0.22);
+}
+
+/* Light mode: hero portrait corner labels - ensure readable contrast */
+:root.light .text-white\/60 { color: rgba(15, 23, 42, 0.65) !important; }
+:root.light .font-mono-accent { color: inherit; }
+.will-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.will-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   BACKGROUND MOTION - subtle, GPU-friendly, non-distracting
+   ============================================================ */
+@keyframes bgOrbDrift1 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(40px, -30px, 0); }
+}
+@keyframes bgOrbDrift2 {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(-30px, 20px, 0); }
+}
+@keyframes bgOrbDrift3 {
+  0%, 100% { transform: translate3d(-50%, 0, 0); }
+  50%      { transform: translate3d(calc(-50% + 30px), -20px, 0); }
+}
+.bg-orb {
+  will-change: transform;
+}
+.bg-orb-1 { animation: bgOrbDrift1 32s ease-in-out infinite; }
+.bg-orb-2 { animation: bgOrbDrift2 38s ease-in-out infinite; }
+.bg-orb-3 { animation: bgOrbDrift3 28s ease-in-out infinite; }
+
+@keyframes bgGridShift {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 1; }
+  50%      { transform: translate3d(14px, -10px, 0); opacity: 0.85; }
+}
+.bg-grid-anim {
+  will-change: transform, opacity;
+  animation: bgGridShift 26s ease-in-out infinite;
+}
+
+@keyframes bgWaveBreathe {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.55; }
+  50%      { transform: translate3d(0, -10px, 0); opacity: 0.85; }
+}
+.bg-waves {
+  will-change: transform, opacity;
+  animation: bgWaveBreathe 18s ease-in-out infinite;
+}
+
+@keyframes bgWaveDrift {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-25%, 0, 0); }
+}
+.bg-wave-drift {
+  will-change: transform;
+  animation: bgWaveDrift 40s linear infinite;
+}
+
+@keyframes bgNodesPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+.bg-nodes-pulse circle:nth-child(odd) {
+  animation: bgNodesPulse 4s ease-in-out infinite;
+}
+.bg-nodes-pulse circle:nth-child(even) {
+  animation: bgNodesPulse 5.5s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb-1, .bg-orb-2, .bg-orb-3,
+  .bg-grid-anim, .bg-waves, .bg-wave-drift,
+  .bg-nodes-pulse circle { animation: none !important; }
+}
