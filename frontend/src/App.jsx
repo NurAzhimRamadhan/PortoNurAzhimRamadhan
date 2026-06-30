@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import BackgroundFX from './components/BackgroundFX.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
@@ -11,9 +11,9 @@ import NotFoundPage from './pages/NotFoundPage.jsx';
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-      >
+          <HashRouter
+          future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        >
         <div className="relative min-h-screen text-white selection:bg-accent-3/40">
           <BackgroundFX />
           <ScrollProgress />
@@ -24,7 +24,7 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
